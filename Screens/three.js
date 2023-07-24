@@ -3,14 +3,14 @@ import {StatusBar} from 'expo-status-bar';
 import { View, Text,StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Expenses } from './Screens/Expenses';
-import { Settingsss } from './Screens/Settingsss';
-import { Add } from './Screens/Add';
-import { Reports } from './Screens/Reports';
-import {theme} from './theme';
+import {Expenses} from './Expenses'
+import {Add} from './Add'
+import {Reports} from './Reports'
+import  {Settingsss}  from './Settingsss';
+import { theme } from '../theme';
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Home } from './Screens/Home';
+
 
 
 
@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 
 export default function three() {
   return (
-    <NavigationContainer theme = {theme}>
+    <>
       <StatusBar style = 'light'/>
       <Tab.Navigator screenOptions ={{
         tabBarStyle:{
@@ -84,6 +84,7 @@ export default function three() {
         }}
          />
       </Tab.Navigator>
-    </NavigationContainer>
+      </>
+   
   )
 }
