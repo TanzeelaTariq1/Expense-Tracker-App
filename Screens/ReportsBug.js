@@ -1,8 +1,8 @@
 import { Text, View } from 'react-native';
-export const Categories = () => {
+export const ReportsBug = () => {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Hello, Categories!</Text>
+        <Text>Hello, Reports Bugs!</Text>
       </View>
     );
   }

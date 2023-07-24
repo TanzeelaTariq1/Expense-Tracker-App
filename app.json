@@ -1,6 +1,16 @@
 {
   "expo": {
+        "plugins": [
+          [
+            "expo-calendar",
+            {
+              "calendarPermission": "The app needs to access your calendar."
+            }
+          ]
+        ],
+      
     
+    "jsEngine": "hermes",
     "name": "Expense-Tracker-App",
     "slug": "Expense-Tracker-App",
     "version": "1.0.0",

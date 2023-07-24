@@ -1,7 +1,7 @@
 import React from 'react';
 import{View,StyleSheet, ImageBackground,Text,TextInput,TouchableOpacity} from 'react-native';
 
-const image = {uri: 'https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-abstract-background-black-background-1179x2556-8710.jpg'};
+
 const Login=(props)=>{
     return(
         
@@ -62,24 +62,22 @@ const Login=(props)=>{
             <View style={{alignItems:'flex-end',width:'80%',paddingRight:70}}>
                 <Text style = {{color:'teal',fontWeight:'bold',fontSize:16}}>Forget Password?</Text>
                 </View> 
-                <View style ={{
-      display:'flex',flexDirection:'row',justifyContent:'center',
-      borderRadius: 100, 
-      alignItems: 'center',
-       width: 300 ,
-       height:50,
-       backgroundColor:'teal',
-       justifyContent:'center',
-       marginHorizontal:60,
-       //marginVertical:100,
-       marginTop:10,
-       //marginVertical:100,
-       flex:0,
-      }}>
-        <TouchableOpacity onPress={()=>props.navigation.navigate("three")}>
-        <Text style={{color:'white',fontWeight:'bold',fontSize:20}}>Login</Text>
-        </TouchableOpacity>   
-        </View>   
+                <TouchableOpacity style={{ 
+        borderRadius: 100, 
+        alignItems: 'center',
+         width: 300 ,
+         height:50,
+         backgroundColor:'teal',
+         justifyContent:'center',
+         marginHorizontal:10,
+         //marginVertical:100,
+         marginTop:10,
+         //marginVertical:100,
+        marginRight:50,
+         flex:0,
+          }}>
+      <Text onPress={()=>props.navigation.navigate("three")} style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Login</Text>
+    </TouchableOpacity>
     <View style ={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
         <Text style ={{fontsize:16,fontWeight:'bold'}}>Don't have an account ?</Text>
         <TouchableOpacity onPress={()=>props.navigation.navigate("SignUp")}>

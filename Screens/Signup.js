@@ -1,7 +1,7 @@
 import React from 'react';
 import{View,StyleSheet, ImageBackground,Text,TextInput,TouchableOpacity} from 'react-native';
 
-const image = {uri: 'https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-abstract-background-black-background-1179x2556-8710.jpg'};
+
 const SignUp=(props)=>{
     return(
         
@@ -120,7 +120,7 @@ const SignUp=(props)=>{
            secureTextEntry={true}
             /> 
             
-                <TouchableOpacity style={{ 
+    <TouchableOpacity style={{ 
         borderRadius: 100, 
         alignItems: 'center',
          width: 300 ,
@@ -134,8 +134,15 @@ const SignUp=(props)=>{
         marginRight:50,
          flex:0,
           }}>
-      <Text style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Signup</Text>
-    </TouchableOpacity> 
+      <Text onPress={()=>props.navigation.navigate("three")} style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Signup</Text>
+    </TouchableOpacity>
+    <View style ={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
+        <Text style ={{fontsize:16,fontWeight:'bold'}}>Already have an account ?</Text>
+        <TouchableOpacity onPress={()=>props.navigation.navigate("Login")}>
+        <Text style={{color:'teal',fontWeight:'bold',fontSize:16}}>Login</Text>
+        </TouchableOpacity>
+        
+        </View>    
     
           </View>
         

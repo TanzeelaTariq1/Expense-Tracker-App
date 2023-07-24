@@ -1,12 +1,11 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View,TouchableOpacity,Image} from 'react-native';
 
-const image = {uri: 'https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-abstract-background-black-background-1179x2556-8710.jpg'};
+
 
 export const Home = (props) => (
   <View style={styles.container}>
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-      <Text style={styles.text}>Welcome To Cash-Tracker</Text>
+      <Text style={styles.text}>Welcome To Smart-Spend</Text>
       <Image style = {{
         height:200,
         width:200,
@@ -55,7 +54,7 @@ export const Home = (props) => (
         <Text style={{color:'white',fontWeight:'bold',fontSize:20}}>SignUp</Text>
         </TouchableOpacity>   
         </View>   
-    </ImageBackground>
+   
   </View>
 );
 
