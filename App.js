@@ -5,13 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home } from './Screens/Home';
 import { theme } from './theme';
-import three from './Screens/three';
 import { Settingsss } from './Screens/Settingsss';
 import { Categories } from './Screens/Categories';
 import Login from './Screens/Login';
 import SignUp from './Screens/Signup';
 import { ReportsBug } from './Screens/ReportsBug';
 import { FrontPage } from './Screens/FrontPage';
+import { Expenses } from './Screens/Expenses';
+import Main from './Screens/Main';
+
 const Stack = createNativeStackNavigator();
 
 
@@ -39,18 +41,15 @@ export default function App() {
          options={{
           headerShown:false
          }}
-        name='three'
-        component={three}
+        name='Main'
+        component={Main}
         />
         
         <Stack.Screen
         name='Categories'
         component={Categories}
         />
-        <Stack.Screen
-        name='ReportsBug'
-        component={ReportsBug}
-        />
+       
         
         
       

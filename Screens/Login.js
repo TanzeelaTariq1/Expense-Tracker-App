@@ -76,7 +76,7 @@ const Login=(props)=>{
         marginRight:50,
          flex:0,
           }}>
-      <Text onPress={()=>props.navigation.navigate("three")} style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Login</Text>
+      <Text onPress={()=>props.navigation.navigate("Main")} style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Login</Text>
     </TouchableOpacity>
     <View style ={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
         <Text style ={{fontsize:16,fontWeight:'bold'}}>Don't have an account ?</Text>

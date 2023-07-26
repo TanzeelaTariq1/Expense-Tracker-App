@@ -43,27 +43,6 @@ export const Settingsss = (props) => {
          //marginVertical:100,
          flex:0,
         }}>
-          <TouchableOpacity onPress={()=>props.navigation.navigate("ReportsBug")}
-          style={styles.navBarLeftButton}>
-       
-       <Text style={styles.buttonText}>Report Bug</Text>
-       <Fontisto name="angle-right" size={24} />
-    </TouchableOpacity> 
-          </View>
-          <View style ={{
-       flexDirection:'row',justifyContent:'center',
-        //borderRadius: 100, 
-        alignItems: 'center',
-         width: 400 ,
-         height:50,
-         backgroundColor:'lightblue',
-         justifyContent:'center',
-         marginHorizontal:5,
-         //marginVertical:100,
-         marginTop:10,
-         //marginVertical:100,
-         flex:0,
-        }}>
           <TouchableOpacity onPress={()=>{
             Alert.alert('Are you sure? ','This action cannot be undone',[
               {

@@ -134,7 +134,7 @@ const SignUp=(props)=>{
         marginRight:50,
          flex:0,
           }}>
-      <Text onPress={()=>props.navigation.navigate("three")} style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Signup</Text>
+      <Text onPress={()=>props.navigation.navigate("Main")} style={{ color:'white', fontSize: 20,fontWeight:'bold'  }}>Signup</Text>
     </TouchableOpacity>
     <View style ={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
         <Text style ={{fontsize:16,fontWeight:'bold'}}>Already have an account ?</Text>

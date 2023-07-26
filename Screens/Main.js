@@ -16,7 +16,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-export default function three() {
+export default function Main() {
   return (
     <>
       <StatusBar style = 'light'/>
