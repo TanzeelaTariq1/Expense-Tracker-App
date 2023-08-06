@@ -1,71 +1,82 @@
-import React, { useMemo } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { theme } from '../theme';
-
+import React, { useMemo,useState } from 'react';
+import { Text, TouchableOpacity,View,StyleSheet,TextInput } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 const ListItem = ({
-  label,
-  detail,
-  onClick,
-  swipeToDelete,
-  onDelete,
-  isDestructive,
+ label,
+ iconName,
+ error,
+ password,
+ onFocus=()=>{},
+ ...props
+ 
 }) => {
-  const item = useMemo(
-    () => (
-      <TouchableOpacity
+   const [isFocused,setIsFocused] = useState(false);
+   const [hidePassword,setHidePassword]=useState(password);
+   return <View style={{marginBottom:20,}}>
+    <Text style={style.label}>{label}</Text>
+    <View style={[style.inputContainer,
+    {
+      borderColor:error
+      ?color='red'
+      :isFocused
+      ?color='teal'
+      :color='whitesmoke',
+      
+      },]}>
+      <MaterialCommunityIcons name={iconName}
         style={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: !!detail ? 'space-between' : 'flex-start',
-          alignItems: 'center',
-          minHeight: 44,
-          paddingHorizontal: 12,
-          borderBottomWidth: 1,
-          borderBottomColor: theme.colors.border,
-          backgroundColor: theme.colors.card,
+          fontSize:22,
+          color:'teal',
+          marginRight:10,
         }}
-        onPress={onClick}
-        disabled={!onClick}
-      >
-        <Text
-          style={{
-            fontSize: 16,
-            color: isDestructive ? theme.colors.error : 'white',
-          }}
-        >
-          {label}
-        </Text>
-        {detail}
-      </TouchableOpacity>
-    ),
-    [label, detail]
-  );
-
-  if (swipeToDelete) {
-    return (
-      <Swipeable
-        renderRightActions={() => (
-          <TouchableOpacity
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: 100,
-            }}
-            onPress={onDelete}
-          >
-            <Text style={{ color: 'white' }}>Delete</Text>
-          </TouchableOpacity>
-        )}
-        onSwipeableRightOpen={onDelete}
-      >
-        {item}
-      </Swipeable>
-    );
-  }
-
-  return item;
+      />
+      <TextInput 
+      secureTextEntry={hidePassword}
+      autoCorrect={false}
+      onFocus={()=>{
+        onFocus();
+        setIsFocused(true);
+      }}
+      onBlur={()=>{
+        setIsFocused(false);
+      }}
+      style={{color:'teal',flex:1}}
+      {...props}/>
+      {password && (
+        <MaterialCommunityIcons name = {hidePassword?"eye-outline":"eye-off-outline"}
+        onPress={()=>setHidePassword(!hidePassword)}
+       style={{
+          fontSize:22,
+          color:'teal',
+          marginRight:10,
+        }}
+      />
+      )}
+      
+    </View>
+    {error && (
+      <Text style={{color:'red',fontSize:12, marginTop:7}}>
+      {error}</Text>
+    )}
+    
+   </View>
 };
+const style=StyleSheet.create({
+  label:{
+    marginVertical:5,
+    fontSize:14,
+    color:'teal'
+  },
+  inputContainer:{
+    height:45,
+    backgroundColor:'whitesmoke',
+    flexDirection:'row',
+   paddingHorizontal:15,
+    borderWidth:1,
+    alignItems:'center',
+   
+   
+  }
+})
 
 export default ListItem;

@@ -9,6 +9,7 @@ export const Home = (props) => (
       <Image style = {{
         height:200,
         width:200,
+        marginTop:10,
         marginHorizontal:100,
         //paddingBottom:20,
         borderColor:'black',
@@ -17,18 +18,18 @@ export const Home = (props) => (
         borderRightWidth:5,
         borderEndWidth:5
     
-      }} source={require('E:/Expense-Tracker-App/img/Capture1.jpg')}/>
+      }} source={require('E:/Expense-Tracker-App/img/sk.jpg')}/>
          <View style ={{
       display:'flex',flexDirection:'row',justifyContent:'center',
       borderRadius: 100, 
       alignItems: 'center',
        width: 300 ,
-       height:50,
+       height:60,
        backgroundColor:'teal',
        justifyContent:'center',
        marginHorizontal:60,
        //marginVertical:100,
-       marginTop:5,
+       marginTop:30,
        //marginVertical:100,
        flex:0,
       }}>
@@ -41,12 +42,12 @@ export const Home = (props) => (
       borderRadius: 100, 
       alignItems: 'center',
        width: 300 ,
-       height:50,
+       height:60,
        backgroundColor:'teal',
        justifyContent:'center',
        marginHorizontal:60,
        //marginVertical:100,
-       marginTop:10,
+       marginTop:20,
        //marginVertical:100,
        flex:0,
       }}>
@@ -74,11 +75,12 @@ const styles = StyleSheet.create({
     lineHeight: 84,
     fontStyle: 'italic',
     textAlign: 'center',
-    paddingBottom:0,
+    
     fontWeight:'bold',
-    marginTop:5,
+    //marginTop:5,
     paddingTop:5,
-    marginVertical:0,
+    marginTop:60,
+    textAlign:'center'
     //marginTop:30,
    
     

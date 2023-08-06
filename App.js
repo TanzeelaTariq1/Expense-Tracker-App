@@ -2,7 +2,8 @@ import * as React from 'react';
 import {StatusBar} from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+//import {useState} from './'
+import {ActivityIndicator, View, useState,useEffect,setTimeout} from 'react-native'
 import { Home } from './Screens/Home';
 import { theme } from './theme';
 import { Settingsss } from './Screens/Settingsss';
@@ -13,11 +14,11 @@ import { ReportsBug } from './Screens/ReportsBug';
 import { FrontPage } from './Screens/FrontPage';
 import { Expenses } from './Screens/Expenses';
 import Main from './Screens/Main';
+import Welcome from './Screens/Welcome';
 
 const Stack = createNativeStackNavigator();
-
-
 export default function App() {
+  
   return (
     <>
       <NavigationContainer theme = {theme}>
@@ -44,15 +45,10 @@ export default function App() {
         name='Main'
         component={Main}
         />
-        
         <Stack.Screen
         name='Categories'
         component={Categories}
         />
-       
-        
-        
-      
       </Stack.Navigator>
     </NavigationContainer>
     </>

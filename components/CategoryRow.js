@@ -3,7 +3,7 @@ import { theme } from "../theme";
 import { Categories } from "../Screens/Categories";
 import {useState} from 'react-native'
 
-  const CategoryRow =()=>(
+  const CategoryRow =(name)=>(
     <View
     style={{
         display:'flex',
@@ -28,7 +28,7 @@ import {useState} from 'react-native'
         }}
         />
         
-        <Text style={{color:'white', paddingLeft:5}}>bills</Text>
+        <Text style={{color:'white', paddingLeft:5}}>{name}</Text>
 
 
        

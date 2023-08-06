@@ -1,15 +1,37 @@
 import { KeyboardAvoidingView, Modal } from 'react-native';
 import { useState } from 'react';
-import { Text, View,TouchableOpacity,StyleSheet,TextInput,ScrollView } from 'react-native';
+import { Text, View,TouchableOpacity,StyleSheet,TextInput,ScrollView,input } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Recurrence } from '../types/recurrence';
 import DatePicker from 'react-native-modern-datepicker';
 import { getToday,getFormatedDate } from 'react-native-modern-datepicker';
 import { FontAwesome } from "@expo/vector-icons";
-
-
-export const Add = (props) => {
+import { Button, SafeAreaView,  } from 'react-native';
+ import ListItem from '../components/ListItem';
+import DateTimePicker from '@react-native-community/datetimepicker';
  
+export const Add = (props,) => {
+  const [amount,setAmount]=useState();
+   const [datePicker, setDatePicker] = useState(false);
+ 
+   const [date, setDate] = useState(new Date());
+  
+   const [selectedValue, setSelectedValue] = useState('');
+   const handleValueChange =(itemValue, index)=>{
+      const newInputs=[...input]
+      newInputs[index]=itemValue;
+      setSelectedValue(newInputs);
+        }
+        function showDatePicker() {
+         setDatePicker(true);
+       };
+      
+      
+      
+       function onDateSelected(event, value) {
+         setDate(value);
+         setDatePicker(false);
+       };
     return (
     
       <ScrollView>
@@ -22,7 +44,36 @@ export const Add = (props) => {
           }}
       >
        
-      <View style ={{
+    
+      
+      <View style={styles.MainContainer}>
+ 
+      
+       
+ {datePicker && (
+   <DateTimePicker
+     value={date}
+     mode={'date'}
+     display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+     is24Hour={true}
+     onChange={onDateSelected}
+     style={styles.datePicker}
+   />
+ )}
+
+ 
+
+ {!datePicker && (
+   <View style={{ margin: 10 }}>
+     <Button title="Date " color="teal" onPress={showDatePicker}  />
+   </View>
+ )}
+  <Text style={styles.text}> {date.toDateString()}</Text>
+
+
+
+</View>
+<View style ={{
    flexDirection:'row',justifyContent:'center',
     //borderRadius: 100, 
     alignItems: 'center',
@@ -30,18 +81,18 @@ export const Add = (props) => {
      height:50,
      backgroundColor:'lightblue',
      justifyContent:'center',
-     marginHorizontal:5,
+    
      //marginVertical:100,
-     marginTop:16,
+     
      //marginVertical:100,
      flex:0,
-     borderRadius:11,
+     
     }}>
       <TouchableOpacity onPress={''}
       style={styles.navBarLeftButton}>
    <Text style={{
            color: 'black',
-           fontSize: 20,
+           fontSize: 18,
            paddingRight:260,
            textAlign:'left'
         }}>Amount</Text>
@@ -50,10 +101,13 @@ export const Add = (props) => {
      backgroundColor:'lightblue',
      textAlign:'right',
      //flex:0.75,
-     paddingRight:8,
+     paddingRight:10,
+     color:'purple'
      
   }} placeholder='Amount'
-     placeholderTextColor='white'
+     placeholderTextColor='purple'
+     value={amount}
+     onChangeText={(amount)=>setAmount(amount)}
      
   />
     
@@ -71,92 +125,18 @@ export const Add = (props) => {
      height:50,
      backgroundColor:'lightblue',
      justifyContent:'center',
-     marginHorizontal:5,
+    
      //marginVertical:100,
-     marginTop:16,
+    
      //marginVertical:100,
-     flex:0,
-     borderRadius:11,
+     
     }}>
       <TouchableOpacity onPress={''}
       style={styles.navBarLeftButton}>
    <Text style={{
            color: 'black',
            fontSize: 20,
-           paddingRight:230,
-           textAlign:'left'
-        }}>Recurrence</Text>
-  <TextInput style ={{
-     borderRadius:8,
-     backgroundColor:'lightblue',
-     textAlign:'right',
-     //flex:0.75,
-     paddingRight:8,
-     color:'#252c6a'
-  }} placeholder='None'
-     placeholderTextColor='white'
-     
-  />
-</TouchableOpacity> 
-      </View>
-      <View style ={{
-   flexDirection:'row',justifyContent:'center',
-    //borderRadius: 100, 
-    alignItems: 'center',
-     width: 400 ,
-     height:50,
-     backgroundColor:'lightblue',
-     justifyContent:'center',
-     marginHorizontal:5,
-     //marginVertical:100,
-     marginTop:16,
-     //marginVertical:100,
-     flex:0,
-     borderRadius:11,
-    }}>
-      <TouchableOpacity onPress={''}
-      style={styles.navBarLeftButton}>
-   <Text style={{
-           color: 'black',
-           fontSize: 20,
-           paddingRight:230,
-           textAlign:'left'
-        }}>Date</Text>
-  <TextInput style ={{
-     borderRadius:8,
-     backgroundColor:'lightblue',
-     textAlign:'right',
-     //flex:0.75,
-     paddingRight:8,
-     color:'teal'
-     
-  }} placeholder='YYYY/MM/DD'
-     placeholderTextColor='white'
-     
-  />
-</TouchableOpacity> 
-      </View>
-      <View style ={{
-   flexDirection:'row',justifyContent:'center',
-    //borderRadius: 100, 
-    alignItems: 'center',
-     width: 400 ,
-     height:50,
-     backgroundColor:'lightblue',
-     justifyContent:'center',
-     marginHorizontal:5,
-     //marginVertical:100,
-     marginTop:16,
-     //marginVertical:100,
-     flex:0,
-     borderRadius:11,
-    }}>
-      <TouchableOpacity onPress={''}
-      style={styles.navBarLeftButton}>
-   <Text style={{
-           color: 'black',
-           fontSize: 20,
-           paddingRight:260,
+           paddingRight:290,
            textAlign:'left'
         }}>Note</Text>
   <TextInput style ={{
@@ -165,11 +145,12 @@ export const Add = (props) => {
      textAlign:'right',
      //flex:0.75,
      paddingRight:8,
+     color:'purple'
      
      
   }} placeholder='Note'
-  placeholdersize={30}
-     placeholderTextColor='white'
+ 
+     placeholderTextColor='purple'
      
   />
     
@@ -179,47 +160,34 @@ export const Add = (props) => {
    
 </TouchableOpacity> 
       </View>
-      <View style ={{
-   flexDirection:'row',justifyContent:'center',
-    //borderRadius: 100, 
-    alignItems: 'center',
-     width: 400 ,
-     height:50,
-     backgroundColor:'lightblue',
-     justifyContent:'center',
-     marginHorizontal:5,
-     //marginVertical:100,
-     marginTop:16,
-     //marginVertical:100,
-     flex:0,
-     borderRadius:11,
-    }}>
-      <TouchableOpacity onPress={''}
-      style={styles.navBarLeftButton}>
-   <Text style={{
-           color: 'black',
-           fontSize: 20,
-           paddingRight:230,
-           textAlign:'left'
-        }}>Category</Text>
-  <TextInput style ={{
-     borderRadius:8,
-     backgroundColor:'lightblue',
-     textAlign:'right',
-     //flex:0.75,
-     paddingRight:8,
-     color:'#fa364a'
+      <View style={{backgroundColor:'lightblue',width:400,height:50,}}>
      
-  }} placeholder='Category'
-     placeholderTextColor='white'
-     
-  />
-    
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={handleValueChange}
+        style={{textAlign:'left',}}
+      >
+        <Picker.Item label="Recurrence:None" value="none" />
+        <Picker.Item label="Recurrence:Daily" value="daily" />
+        <Picker.Item label="Recurrence:Weekly" value="weekly" />
+        <Picker.Item label="Recurrence:Monthly" value="monthly" />
+        <Picker.Item label="Recurrence:Yearly" value="yearly" />
+      </Picker>
+      </View>
+      <View style={{backgroundColor:'lightblue',width:400,height:50,}}>
       
-  
-        
-   
-</TouchableOpacity> 
+      <Picker
+        selectedValue={selectedValue}
+        onValueChange={handleValueChange}
+        backgroundColor='purple'
+        style={{textAlign:'left'}}
+      >
+        <Picker.Item label="Categories:Education" value="education" color='black' />
+        <Picker.Item label="Categories:Food" value="food" color='black'/>
+        <Picker.Item label="Categories:Grocery" value="grocery" color='black' />
+        <Picker.Item label="Categories:Shopping" value="shopping" color='black' />
+        <Picker.Item label="Categories:Bills" value="bills"  color='black'/>
+      </Picker>
       </View>
       <View style ={{
    flexDirection:'row',justifyContent:'center',
@@ -244,14 +212,14 @@ export const Add = (props) => {
         justifyContent: 'center',
         
         
-      }}>
+      }}  mode='contained'>
    <Text style={{
            color: 'white',
            fontSize: 20,
            //paddingRight:230,
            textAlign:'center',
            justifyContent:'center'
-        }} onPress={()=>props.navigation.navigate("Expenses")}>Submit Expenses</Text>
+        }} onPress={()=>props.navigation.navigate("Expenses",)}>Submit Expenses</Text>
   
 </TouchableOpacity> 
       </View>
@@ -263,6 +231,33 @@ export const Add = (props) => {
 );
 } 
 const styles= StyleSheet.create({
+   MainContainer: {
+      flex: 1,
+      //padding: 6,
+      alignItems: 'center',
+      backgroundColor: 'lightblue',
+      flexDirection:'row',
+      
+    },
+   
+    text: {
+      fontSize: 15,
+      color: 'purple',
+     marginLeft:200,
+      //marginBottom: 10,
+      //marginHorizontal:140,
+      //textAlign: 'right'
+    },
+   
+    // Style for iOS ONLY...
+    datePicker: {
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      width: 320,
+      height: 260,
+      display: 'flex',
+      
+    },
 navBarLeftButton: {
  flex: 1,
  flexDirection: 'row',
@@ -301,3 +296,4 @@ shadowRadius:4,
 elevation:5,
 }
 })
+

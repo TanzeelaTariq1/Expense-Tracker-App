@@ -10,7 +10,7 @@ import  {Settingsss}  from './Settingsss';
 import { theme } from '../theme';
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import { MaterialIcons } from "@expo/vector-icons";
 
 
 
@@ -33,7 +33,7 @@ export default function Main() {
           tabBarIcon: (tabInfo) => {
             return (
               <MaterialCommunityIcons
-                name="tray-arrow-up"
+                name="home"
                 size={24}
                 color={tabInfo.focused ? "black" : "#ffffff"}
               />
